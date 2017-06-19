@@ -1,0 +1,5 @@
+#cloud-config
+fqdn: minecraft.jlindsey.me
+package_update: true
+packages:
+  - python
