@@ -1,18 +1,5 @@
 
-# Created by https://www.gitignore.io/api/ansible,osx,emacs
-
-### Ansible ###
-# Ansible retry files
-*.retry
-
-# Test driven development on Ansible with Molecule, Testinfra and pytest
-.cache/
-.idea/
-.molecule/
-.tox/
-__pycache__/
-tests/roles
-*.pyc
+# Created by https://www.gitignore.io/api/terraform,emacs,osx
 
 ### Emacs ###
 # -*- mode: gitignore; -*-
@@ -88,5 +75,12 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# End of https://www.gitignore.io/api/ansible,osx,emacs
-.envrc
+### Terraform ###
+# Terraform - https://terraform.io/
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+
+### Terraform Patch ###
+# End of https://www.gitignore.io/api/terraform,emacs,osx
