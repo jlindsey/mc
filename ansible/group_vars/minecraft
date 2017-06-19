@@ -1,0 +1,8 @@
+# -*- mode: yaml -*-
+---
+ftb_download_url: https://addons.cursecdn.com/files/2435/251/FTBBeyondServer_1.8.1.zip
+
+pvp_enabled: false
+max_players: 10
+white_list: true
+motd: Fatcraft Redux

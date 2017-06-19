@@ -1,0 +1,30 @@
+---
+- name: Install common packages
+  apt: name={{item}} state=latest
+  with_items:
+    - htop
+    - wget
+    - curl
+    - ufw
+    - fail2ban
+    - vim
+    - zip
+    - unzip
+    - tmux
+    - git
+
+- name: Rate limit SSH
+  ufw:
+    rule: limit
+    port: ssh
+    proto: tcp
+
+- name: Allow SSH
+  ufw:
+     rule: allow
+     name: OpenSSH
+
+- name: Enable UFW
+  ufw:
+    state: enabled
+    policy: deny

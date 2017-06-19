@@ -1,0 +1,14 @@
+[Unit]
+Description=Manages Minecraft server
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=minecraft
+Group=minecraft
+WorkingDirectory=/home/minecraft/server
+ExecStart=/usr/bin/tmux -2 new-session -d -s mc /bin/bash ServerStart.sh
+ExecStop=/usr/bin/tmux send-keys -t mc stop C-m
+
+[Install]
+WantedBy=default.target

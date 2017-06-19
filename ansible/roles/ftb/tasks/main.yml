@@ -1,0 +1,50 @@
+---
+- name: Install MC required packages
+  apt: name={{item}} state=installed
+  with_items:
+    - openjdk-8-jre-headless
+
+- name: Create Minecraft user
+  user:
+    name: minecraft
+    shell: /bin/bash
+
+- name: Create server dir
+  file:
+    path: /home/minecraft/server
+    state: directory
+    owner: minecraft
+    group: minecraft
+
+- name: Download and extract FTB server
+  unarchive:
+    src: "{{ftb_download_url}}"
+    remote_src: True
+    dest: /home/minecraft/server
+    creates: /home/minecraft/server/version.json
+    owner: minecraft
+    group: minecraft
+
+- name: Ensure server is owned by Minecraft user
+  file:
+    path: /home/minecraft/server
+    state: directory
+    recurse: True
+    owner: minecraft
+    group: minecraft
+
+- name: Accept FTB EULA
+  lineinfile:
+    path: /home/minecraft/server/eula.txt
+    regexp: '^eula='
+    line: 'eula=true'
+
+- name: Server properties
+  template:
+    src: server.properties.j2
+    dest: /home/minecraft/server/server.properties
+
+- name: Server unit
+  copy:
+    src: ../files/minecraft.service
+    dest: /etc/systemd/system/minecraft.service
