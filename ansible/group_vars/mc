@@ -1,6 +1,6 @@
 # -*- mode: yaml -*-
 ---
-ftb_download_url: https://addons.cursecdn.com/files/2435/251/FTBBeyondServer_1.8.1.zip
+ftb_download_url: https://addons-origin.cursecdn.com/files/2511/988/FTBRevelationServer_1.0.0.zip
 
 pvp_enabled: false
 max_players: 10

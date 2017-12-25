@@ -1,0 +1,12 @@
+{
+    "terraform.format.enable": true,
+    "terraform.indexing": {
+        "enabled": true,
+        "indexerPath": "terraform-index",
+        "liveIndexing": true,
+        "delay": 500
+    },
+    "[terraform]": {
+        "editor.formatOnSave": true
+    }
+}

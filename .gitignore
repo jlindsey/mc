@@ -1,65 +1,8 @@
 
-# Created by https://www.gitignore.io/api/ansible,osx,emacs
+# Created by https://www.gitignore.io/api/osx,ansible,terraform,visualstudiocode
 
 ### Ansible ###
-# Ansible retry files
 *.retry
-
-# Test driven development on Ansible with Molecule, Testinfra and pytest
-.cache/
-.idea/
-.molecule/
-.tox/
-__pycache__/
-tests/roles
-*.pyc
-
-### Emacs ###
-# -*- mode: gitignore; -*-
-*~
-\#*\#
-/.emacs.desktop
-/.emacs.desktop.lock
-*.elc
-auto-save-list
-tramp
-.\#*
-
-# Org-mode
-.org-id-locations
-*_archive
-
-# flymake-mode
-*_flymake.*
-
-# eshell files
-/eshell/history
-/eshell/lastdir
-
-# elpa packages
-/elpa/
-
-# reftex files
-*.rel
-
-# AUCTeX auto folder
-/auto/
-
-# cask packages
-.cask/
-dist/
-
-# Flycheck
-flycheck_*.el
-
-# server auth directory
-/server/
-
-# projectiles files
-.projectile
-
-# directory configuration
-.dir-locals.el
 
 ### OSX ###
 *.DS_Store
@@ -88,5 +31,23 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# End of https://www.gitignore.io/api/ansible,osx,emacs
+### Terraform ###
+# Compiled files
+*.tfstate
+*.tfstate.backup
+
+# Module directory
+.terraform/
+
+### Terraform Patch ###
+*.tfvars
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history
+
+# End of https://www.gitignore.io/api/osx,ansible,terraform,visualstudiocode
 .envrc
