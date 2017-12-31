@@ -20,20 +20,16 @@ resource "digitalocean_droplet" "minecraft" {
   user_data = "${data.template_file.cloud_init.rendered}"
 }
 
-resource "digitalocean_floating_ip" "minecraft" {
-  droplet_id = "${digitalocean_droplet.minecraft.id}"
-  region     = "${digitalocean_droplet.minecraft.region}"
-}
-
 locals {
-  split_fqdn = "${split(".", var.domain_name)}"
-  domain     = "${join(".", slice(local.split_fqdn, length(local.split_fqdn) - 2, length(local.split_fqdn)))}"
+  split_fqdn  = "${split(".", var.domain_name)}"
+  domain      = "${join(".", slice(local.split_fqdn, length(local.split_fqdn) - 2, length(local.split_fqdn)))}"
+  domain_name = "${replace(replace(var.domain_name, local.domain, ""), ".", "")}"
 }
 
 resource "digitalocean_record" "minecraft" {
   domain = "${local.domain}"
   type   = "A"
-  name   = "${var.domain_name}"
-  ttl    = "3600"
-  value  = "${digitalocean_floating_ip.minecraft.ip_address}"
+  name   = "${local.domain_name}"
+  ttl    = "300"
+  value  = "${digitalocean_droplet.minecraft.ipv4_address}"
 }

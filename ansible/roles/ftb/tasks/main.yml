@@ -43,8 +43,24 @@
   template:
     src: server.properties.j2
     dest: /home/minecraft/server/server.properties
+  notify:
+    - restart minecraft
 
 - name: Server unit
   copy:
     src: ../files/minecraft.service
     dest: /etc/systemd/system/minecraft.service
+  notify:
+    - restart minecraft
+
+- name: Enable Server unit
+  systemd:
+    name: minecraft
+    daemon_reload: yes
+    enabled: yes
+
+- name: Allow Minecraft Server Port
+  ufw:
+    rule: allow
+    port: 25565
+    proto: tcp

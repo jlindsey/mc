@@ -12,6 +12,7 @@
     - unzip
     - tmux
     - git
+    - zsh
 
 - name: Rate limit SSH
   ufw:
